@@ -10,6 +10,9 @@ export default async function createNote(note) {
         const result = await response.json();
         return {"status": response.status, "body": result};    
     } catch(e) {
-        return e.message;
+        return { 
+            "status": 500, 
+            "body": { "error": "Unable to create notes at this time" } 
+        };    
     }
 }

@@ -10,6 +10,9 @@ export default async function editNode(id, note) {
         const result = await response.json();
         return {"status": response.status, "body": result};    
     } catch(e) {
-        return e.message;
+        return { 
+            "status": 500, 
+            "body": { "error": "Unable to edit notes at this time" } 
+        };
     }
 } 
