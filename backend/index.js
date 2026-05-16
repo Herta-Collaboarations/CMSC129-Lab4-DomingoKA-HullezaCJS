@@ -68,6 +68,28 @@ app.put("/notes/:id", (req, res) => {
     }
 });
 
+app.delete("/notes/:id", (req, res) => {
+    try {
+        const id = parseInt(req.params.id, 10);
+        console.log(id);
+
+        if (Number.isNaN(id) || id < 0) {
+            return res.status(400).send({ "error": "Invalid ID format" });
+        }
+
+        if (notesDB[id]) {
+            const result = notesDB[id];
+            notesDB[id] = undefined;
+            res.status(200).send(result);
+        } else {
+            res.status(404).send({ "error": "Note ID not found" });
+        }
+        
+    } catch (error) {
+        res.status(500).send({ "error": error.message });
+    }
+});
+
 app.listen(3000, () => {
     console.log("Server is running in http://localhost:3000")
 });
