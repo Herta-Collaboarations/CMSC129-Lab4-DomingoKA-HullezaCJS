@@ -179,3 +179,5 @@ The following tests are based on the user stories above:
     ![alt text](image-1.png)
 * **Integration Test for Note Editting**
     ![alt text](image-2.png)
+* **Integration Test for Fetching All Notes**
+    ![alt text](image-3.png)
