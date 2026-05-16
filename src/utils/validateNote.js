@@ -1,3 +1,9 @@
 export default function validateNote(note) {
-    return "Not implemented";    
+    if (note.title.trim() === "") {
+        return false;
+    }
+    if (note.content.length > 1000) {
+        return false;
+    }
+    return true;
 }
