@@ -18,7 +18,7 @@ app.get("/notes", (req, res) => {
 
 app.get("/notes/:id", (req, res) => {
     try {
-        const id = parseInt(req.params.id, 10);
+        const id = parseInt(req.params.id, 10);    
         if (Number.isNaN(id) || id < 0) {
             return res.status(400).send({ "error": "Invalid ID format" });
         }
@@ -26,7 +26,7 @@ app.get("/notes/:id", (req, res) => {
         if (notesDB[id]) {
             res.status(200).send(notesDB[id]);
         } else {
-            res.status(404).send({ "error": "A note with this ID does not exist." });
+            res.status(404).send({ "error": "Note ID not found" });
         }
         
     } catch (error) {
