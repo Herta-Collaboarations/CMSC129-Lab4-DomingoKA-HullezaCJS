@@ -12,5 +12,4 @@ export default async function editNode(id, note) {
     } catch(e) {
         return e.message;
     }
-  
 } 
