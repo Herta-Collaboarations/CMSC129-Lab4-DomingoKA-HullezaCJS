@@ -8,6 +8,14 @@ app.use(express.json());
 const notesDB = [];
 let dbIndex = 0;
 
+app.get("/notes", (req, res) => {
+    try {
+        res.status(200).send(notesDB);
+    } catch (e) {
+        res.status(500).send({"error" : "Unable to retrieve notes at this time"});
+    }
+})
+
 app.post("/notes", (req, res) => {
     try {
         const {title, content} = req.body;
