@@ -4,6 +4,16 @@ import { json } from "express";
 const app = express();
 app.use(express.json());
 
+function validateNoteID(req, res, next) {
+    const id = parseInt(req.params.id, 10);
+    if (Number.isNaN(id) || id < 0) {
+        return res.status(400).send({ "error": "Invalid ID format" });
+    }
+    req.parsedId = id; 
+    next();
+}
+
+
 // DB is an array that takes in a list of NoteObjects. The index is also the object's ID  
 const notesDB = [];
 let dbIndex = 0;
@@ -16,12 +26,9 @@ app.get("/notes", (req, res) => {
     }
 })
 
-app.get("/notes/:id", (req, res) => {
+app.get("/notes/:id", validateNoteID, (req, res) => {
     try {
-        const id = parseInt(req.params.id, 10);    
-        if (Number.isNaN(id) || id < 0) {
-            return res.status(400).send({ "error": "Invalid ID format" });
-        }
+        const id = req.parsedId;
 
         if (notesDB[id]) {
             res.status(200).send(notesDB[id]);
@@ -68,14 +75,9 @@ app.put("/notes/:id", (req, res) => {
     }
 });
 
-app.delete("/notes/:id", (req, res) => {
+app.delete("/notes/:id", validateNoteID, (req, res) => {
     try {
-        const id = parseInt(req.params.id, 10);
-        console.log(id);
-
-        if (Number.isNaN(id) || id < 0) {
-            return res.status(400).send({ "error": "Invalid ID format" });
-        }
+        const id = req.parsedId;
 
         if (notesDB[id]) {
             const result = notesDB[id];
