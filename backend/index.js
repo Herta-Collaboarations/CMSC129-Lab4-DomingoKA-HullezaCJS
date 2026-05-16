@@ -30,13 +30,13 @@ app.put("/notes/:id", (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
         const result = req.body;
+        
         if (notesDB[id]) {
             notesDB[id] = {...result, "id": id};
             res.status(200).send(notesDB[id]);
         } else {
             res.status(404).send({ "error": "Note ID not found" });
         }
-
     } catch (error) {
         res.status(500).send({"error" : error.message})
     }
