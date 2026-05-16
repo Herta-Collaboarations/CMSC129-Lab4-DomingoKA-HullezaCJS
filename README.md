@@ -174,3 +174,6 @@ The following tests are based on the user stories above:
 * **Unit Tesing for Note Object Validataion**
     ![alt text](image.png)
 
+## Integration Tests
+* **Integration Test for Note Creation**
+    ![alt text](image-1.png)
