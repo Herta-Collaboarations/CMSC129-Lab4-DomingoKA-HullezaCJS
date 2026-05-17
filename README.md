@@ -243,3 +243,7 @@ This means **deployment only happens if all tests pass**, a broken push to `main
 ![Passing CI run](https://github.com/user-attachments/assets/3d037104-4555-47e4-a578-5a82983914c7)
 
 
+## Reflection
+Shifting a test-driven development is a massive mental hurdle because it forces you to understand the entire system. It is incredibly difficult to map out the big picture: the user flows, the core features, and the system’s design. You are essentially forced to architect the solution before you fully feel ready to build it. 
+
+However, it surprisingly acts as a cure for our overengineering minds. Because we are forced to define the exact boundaries and expectations of the system upfront, we gain total clarity on what the code actually needs to do. When we finally sit down to write the implementation, we write only what is required to make that specific test pass. By tackling the hard work of system design first, we protect ourselves from building unnecessary complexity later, so that is good :> .
