@@ -141,9 +141,9 @@ The following tests are based on the user stories above:
 * **Test Scenario:** Successfully adding a new note to the collection.
 * **Flow of Operation:**
     1.  **Navigate:** User opens the application in the browser. User then presses a button that leads to a form for adding notes.
-    2.  **Interaction:** User enters "Lab 4 Tasks" in the Title field and "Complete system tests" in the Content field.
+    2.  **Interaction:** User enters "Dear Madam Herta" in the Title field and "Complete system tests" in the Content field.
     3.  **Action:** User clicks the **"Save"** button.
-* **System Assertion:** The form is cleared, and the new note "Lab 4 Tasks" appears visually at the top of the notes.
+* **System Assertion:** The form is cleared, and the new note "Dear Madam Herta" appears visually at the top of the notes.
 
 #### User Story 2: Read and Update Notes
 * **User Story:** *As a user, I want to see a list of all my saved notes... edit the contents... and save with confirmation so that I can safely update a note.*
@@ -151,9 +151,8 @@ The following tests are based on the user stories above:
 * **Test Scenario:** Modifying an existing note's content with a confirmation safeguard.
 * **Flow of Operation:**
     1.  **Navigate:** User views the list of notes on the dashboard.
-    2.  **Interaction:** User clicks the **"Edit"** button on the "Lab 4 Tasks" note.
+    2.  **Interaction:** User clicks the **"Edit"** button on the "Dear Madam Herta"" note.
     3.  **Action:** User changes the content and clicks **"Update"**.
-    4.  **Confirmation:** The system displays a browser confirmation dialog ("Are you sure?"); the user clicks **"OK"**.
 * **System Assertion:** The dashboard reflects the updated text immediately.
 
 #### User Story 3: Delete a Note
