@@ -1,0 +1,27 @@
+
+.note-section {
+    position: relative;
+
+    .note-container {
+        transform: rotate(-10deg);
+        width: 485px;
+        height: 485px;
+        border-radius: 15px;
+        padding: 64px;
+        overflow-y: auto;
+        background-color: white;
+            
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .note {
+            transform: rotate(10deg);
+            border-radius: 15px;
+            margin-bottom: 32px;
+            padding: 24px;
+            background-color: var(--color-bg-note);
+        }
+    }
+}

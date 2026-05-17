@@ -1,0 +1,40 @@
+
+.home-section {
+    position: relative;
+
+    .note-list {
+        transform: rotate(-10deg);
+        width: 485px;
+        height: 500px;
+        border-radius: 15px;
+        padding: 64px;
+        overflow-y: auto;
+        background-color: white;
+            
+
+        &::-webkit-scrollbar {
+        display: none;
+        }
+
+        .note {
+            transform: rotate(10deg);
+            border-radius: 15px;
+            margin-bottom: 32px;
+            padding: 24px;
+            background-color: var(--color-bg-note);
+        }
+
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .note-header img {
+            width: 16px;
+            aspect-ratio: 1/1;
+            margin: 4px;
+            cursor: pointer;
+        }
+    }
+}
