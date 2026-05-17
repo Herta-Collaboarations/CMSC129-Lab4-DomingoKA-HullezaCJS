@@ -193,7 +193,10 @@ The following tests are based on the user stories above:
 ## System Tests
 * **System Test for Add Note User Story**
     ![alt text](https://github.com/user-attachments/assets/66caf4fd-5540-45e6-99b3-579363dc0ef0)
-    
+  
+* **System Test for Edit
+ Note User Story**
+    ![alt text](https://github.com/user-attachments/assets/1c5176c5-94db-4687-b752-391aa91e1556)
 ## CI/CD Setup
 
 ### Tool Used
