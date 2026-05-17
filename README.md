@@ -1,6 +1,9 @@
+## Link 
+[https://cmsc-129-lab4-domingo-ka-hulleza-cj-drab.vercel.app/](https://cmsc-129-lab4-domingo-ka-hulleza-cj-drab.vercel.app/)
+
 ## App Description
-This application is a lightweight, browser-based notepad application that allows users to create, view, and delete text notes. Try the application 
-[here](https://cmsc-129-lab4-domingo-ka-hulleza-cj-drab.vercel.app/) .
+This application is a lightweight, browser-based notepad application that allows users to create, view, and delete text notes.
+
 
 ## User Stories
 1. **Create a Note:** As a user, I want to type a title and content into a form and save so that I can store my thoughts for later.
@@ -187,6 +190,10 @@ The following tests are based on the user stories above:
 * Integration Test for Note Deletion**
 ![alt text](screenshots/image-5.png)
 
+## System Tests
+* **System Test for Add Note User Story**
+    ![alt text](https://github.com/user-attachments/assets/66caf4fd-5540-45e6-99b3-579363dc0ef0)
+    
 ## CI/CD Setup
 
 ### Tool Used
@@ -213,9 +220,10 @@ The workflow has two jobs:
 This means **deployment only happens if all tests pass**, a broken push to `main` will fail the build job and the deploy job will never run.
 
 ### Red Phase Evidence
-*To be Added*
-![Failing CI run](./assets/ci-red.png)
+![Failing CI run](https://github.com/user-attachments/assets/4357dd02-ebcd-410b-a4d1-1851fdf5e018)
 
 ### Green Phase Evidence
 
 ![Passing CI run](https://github.com/user-attachments/assets/3d037104-4555-47e4-a578-5a82983914c7)
+
+
