@@ -11,38 +11,73 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps: 
-      - name : Checkout Code
-        uses : actions/checkout@v3
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-      - name : Setup Node
-        uses : actions/setup-node@v3
-        with : 
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with: 
           node-version: 20
           cache: 'npm'
 
-      - name : Install Dependencies
-        run  : npm install
+      - name: Install Dependencies
+        run: npm install
 
-      - name: Start Server and Run Integration Tests
+      - name: Start Server and Run Unit/Integration Tests
         run: |
           npm start &
           sleep 5
           npm run test
-  
-  deploy:
+
+  e2e:
     needs: build
     runs-on: "ubuntu-latest"
-    steps : 
-      - name : Checkout Code
-        uses : actions/checkout@v3
 
-      - name : Setup Node
-        uses : actions/setup-node@v3
-        with : 
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Start Backend
+        run: |
+          npm start &
+          sleep 5
+
+      - name: Start Frontend
+        run: |
+          npm run dev &
+          sleep 5
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          spec: cypress/e2e/*.cy.js
+          install: false
+
+  deploy:
+    needs: [build, e2e]
+    runs-on: "ubuntu-latest"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with: 
           node-version: 20
 
-      - name : Deploy to Vercel
-        run : npx vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
-        env : 
+      - name: Deploy to Vercel
+        run: npx vercel --token ${{ secrets.VERCEL_TOKEN }} --prod --confirm
+        env: 
           VERCEL_ORG_ID: ${{ secrets.VERCEL_USER_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
