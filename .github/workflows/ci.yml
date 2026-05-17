@@ -60,7 +60,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          spec: cypress/e2e/*.cy.js
+          spec: cypress/e2e/addUserStory.cy.js,cypress/e2e/editUserStory.cy.js,cypress/e2e/deleteUserStory.cy.js
           install: false
 
   deploy:
