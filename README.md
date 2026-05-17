@@ -143,7 +143,7 @@ The following tests are based on the user stories above:
     1.  **Navigate:** User opens the application in the browser. User then presses a button that leads to a form for adding notes.
     2.  **Interaction:** User enters "Lab 4 Tasks" in the Title field and "Complete system tests" in the Content field.
     3.  **Action:** User clicks the **"Save"** button.
-* **System Assertion:** The form is cleared, and the new note "Lab 4 Tasks" appears visually at the top of the notes list with a toast at the bottom showing a successful adding of the new task
+* **System Assertion:** The form is cleared, and the new note "Lab 4 Tasks" appears visually at the top of the notes.
 
 #### User Story 2: Read and Update Notes
 * **User Story:** *As a user, I want to see a list of all my saved notes... edit the contents... and save with confirmation so that I can safely update a note.*
@@ -154,7 +154,7 @@ The following tests are based on the user stories above:
     2.  **Interaction:** User clicks the **"Edit"** button on the "Lab 4 Tasks" note.
     3.  **Action:** User changes the content and clicks **"Update"**.
     4.  **Confirmation:** The system displays a browser confirmation dialog ("Are you sure?"); the user clicks **"OK"**.
-* **System Assertion:** The dashboard reflects the updated text immediately, and no duplicate note is created with a toast at the bottom showing a successful updating of the new task
+* **System Assertion:** The dashboard reflects the updated text immediately.
 
 #### User Story 3: Delete a Note
 * **User Story:** *As a user, I want to click a delete button on a specific note so that I can remove it with confirmation from me.*
@@ -164,7 +164,7 @@ The following tests are based on the user stories above:
     1.  **Navigate:** User identifies a note to remove.
     2.  **Action:** User clicks the **"Delete"** icon associated with that note.
     3.  **Confirmation:** The system prompts the user with "Are you sure you want to delete this note?"; the user clicks **"Yes"**.
-* **System Assertion:** The note is removed from the UI list with a toast at the bottom showing a successful updating of the new task.
+* **System Assertion:** The note is removed from the UI list.
 
 ## Setup Instructions
 1.  **Clone the repository:** `git clone <repository-url>`
@@ -176,30 +176,39 @@ The following tests are based on the user stories above:
 ## Test Results
 ### Unit Tests
 * **Unit Tesing for Note Object Validataion**
+
     ![alt text](screenshots/image.png)
 
 ## Integration Tests
 * **Integration Test for Note Creation**
+
     ![alt text](screenshots/image-1.png)
 * **Integration Test for Note Editting**
+
     ![alt text](screenshots/image-2.png)
 * **Integration Test for Fetching All Notes**
+
     ![alt text](screenshots/image-3.png)
 * **Integration Test for Fetching A Note**
+
     ![alt text](screenshots/image-4.png)
 * Integration Test for Note Deletion**
-![alt text](screenshots/image-5.png)
+
+    ![alt text](screenshots/image-5.png)
 
 ## System Tests
 * **System Test for Add Note User Story**
+
     ![alt text](https://github.com/user-attachments/assets/060319b0-477f-4a8c-9f02-7685cdf17481)
   
 * **System Test for Edit
  Note User Story**
+
     ![alt text](https://github.com/user-attachments/assets/3e49cec5-b0ff-41ca-a37d-228acb0b6949)
 
 * **System Test for Delete
  Note User Story**
+
     ![alt text](https://github.com/user-attachments/assets/25ba079d-966b-409c-b66c-2b86f6273785)
 
 ## CI/CD Setup
