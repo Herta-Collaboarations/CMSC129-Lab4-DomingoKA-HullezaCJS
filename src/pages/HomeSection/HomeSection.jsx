@@ -4,6 +4,7 @@ import deleteHerta from './../../assets/delete-herta.webp';
 import editIcon from './../../assets/icons/edit.png';
 import deleteIcon from './../../assets/icons/delete.png';
 import getAllNotes from './../../utils/getAllNotes';
+import deleteNote from './../../utils/deleteNote';
 import { useEffect, useState } from 'react';
 
 export default function HomeSection({ section, setSection, setSelectedNote }) {
@@ -18,15 +19,24 @@ export default function HomeSection({ section, setSection, setSelectedNote }) {
     }
 
     const [notes, setNotes] = useState([]);
+    const [selectedId, setSelectedId] = useState(null);
 
     useEffect(() => {
         async function fetchNotes() {
             const { status, body } = await getAllNotes();
-            if (status === 200) setNotes(body.toReversed());
+            if (status === 200) setNotes(body.filter(Boolean).toReversed());
         }
         fetchNotes();
     }, [section]);
 
+    async function handleDelete() {
+        const { status } = await deleteNote(selectedId);
+        if (status === 200) {
+            setSelectedId(null);
+            setSection("deleted");
+            setTimeout(() => setSection("home"), 0);
+        }
+    }
     const BUTTON_ROUTES = {
         "home" : (
             <div className='button-container'>
@@ -36,7 +46,7 @@ export default function HomeSection({ section, setSection, setSelectedNote }) {
         "delete": (
             <div className='button-container'>
                 <button className='secondary-button' onClick={() => setSection("home")}>Cancel</button>
-                <button className='primary-button'>Delete</button>
+                <button className='primary-button' onClick={handleDelete}>Delete</button>
             </div>
         )    
     }
@@ -53,7 +63,10 @@ export default function HomeSection({ section, setSection, setSelectedNote }) {
                                     setSelectedNote(note);
                                     setSection("edit");
                                 }}/>
-                                <img src={deleteIcon} onClick={() => setSection("delete")}/>
+                                <img src={deleteIcon} onClick={() => {
+                                    setSelectedId(note.id);
+                                    setSection("delete");
+                                }}/>
                             </div>
                         </div>
                         <p>{note.content}</p>
