@@ -1,8 +1,11 @@
 import express from "express";
 import { json } from "express";
+import cors from "cors";
 
 const app = express();
+app.use(cors()); 
 app.use(express.json());
+
 
 function validateNoteID(req, res, next) {
     const id = parseInt(req.params.id, 10);

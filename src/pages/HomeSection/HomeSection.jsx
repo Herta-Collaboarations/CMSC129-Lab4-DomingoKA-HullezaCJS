@@ -3,6 +3,8 @@ import homeHerta from './../../assets/home-herta.webp';
 import deleteHerta from './../../assets/delete-herta.webp';
 import editIcon from './../../assets/icons/edit.png';
 import deleteIcon from './../../assets/icons/delete.png';
+import getAllNotes from './../../utils/getAllNotes';
+import { useEffect, useState } from 'react';
 
 export default function HomeSection({ section, setSection }) {
     const IMAGE_ROUTES = {
@@ -15,10 +17,20 @@ export default function HomeSection({ section, setSection }) {
         "delete": "Are you sure you want to delete?" 
     }
 
+    const [notes, setNotes] = useState([]);
+
+    useEffect(() => {
+        async function fetchNotes() {
+            const { status, body } = await getAllNotes();
+            if (status === 200) setNotes(body.toReversed());
+        }
+        fetchNotes();
+    }, [section]);
+
     const BUTTON_ROUTES = {
         "home" : (
             <div className='button-container'>
-                <button className='primary-button' onClick = {() => setSection("add")}>Add</button>
+                <button className='primary-button' onClick={() => setSection("add")}>Add</button>
             </div>
         ), 
         "delete": (
@@ -29,20 +41,21 @@ export default function HomeSection({ section, setSection }) {
         )    
     }
 
-
     return (
         <main className='home-section'>
             <div className='note-list'>
-                <div className='note'>
-                    <div className='note-header'>
-                        <h3>Note Title</h3>
-                        <div className='utils'>
-                            <img src={editIcon} onClick={() => setSection("edit")}/>
-                            <img src={deleteIcon} onClick={() => setSection("delete")}/>
+                { notes.map((note) => (
+                    <div className='note' key={note.id}>
+                        <div className='note-header'>
+                            <h3>{note.title}</h3>
+                            <div className='utils'>
+                                <img src={editIcon} onClick={() => setSection("edit")}/>
+                                <img src={deleteIcon} onClick={() => setSection("delete")}/>
+                            </div>
                         </div>
+                        <p>{note.content}</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat metus eu lectus convallis, a ultrices est tempor. Curabitur viverra nisl vehicula, posuere quam vitae, euismod nulla. Nunc ut velit venenatis, imperdiet velit sit amet, ultricies est. Maecenas risus ante, congue id eros sit amet, molestie consequat purus. Sed vitae diam sed ligula feugiat porta at non tortor. Duis urna est, consequat eget hendrerit gravida, ullamcorper ut velit.</p>
-                </div>
+                ))}
             </div>
             <footer>
                 <img src={IMAGE_ROUTES[section]}/>
