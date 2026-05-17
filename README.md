@@ -1,5 +1,6 @@
 ## App Description
-This application is a lightweight, browser-based notepad application that allows users to create, view, and delete text notes. 
+This application is a lightweight, browser-based notepad application that allows users to create, view, and delete text notes. Try the application 
+[here](https://cmsc-129-lab4-domingo-ka-hulleza-cj-drab.vercel.app/) .
 
 ## User Stories
 1. **Create a Note:** As a user, I want to type a title and content into a form and save so that I can store my thoughts for later.
@@ -185,3 +186,36 @@ The following tests are based on the user stories above:
     ![alt text](screenshots/image-4.png)
 * Integration Test for Note Deletion**
 ![alt text](screenshots/image-5.png)
+
+## CI/CD Setup
+
+### Tool Used
+**GitHub Actions:** configured in `.github/workflows/ci.yml`
+
+### What Triggers the Workflow
+The pipeline runs automatically on every push to the `main` branch. It can also be triggered manually via the **Actions** tab on GitHub using `workflow_dispatch`.
+
+### What the Pipeline Does
+The workflow has two jobs:
+
+**`build`** — Runs on every push:
+1. Checks out the code
+2. Sets up Node.js 20
+3. Installs dependencies via `npm install`
+4. Starts the Express server in the background (`npm start &`)
+5. Waits 5 seconds for the server to be ready
+6. Runs the full test suite (`npm run test`)
+
+**`deploy`** — Only runs if `build` passes (`needs: build`):
+1. Deploys the application to Vercel using `npx vercel --prod`
+2. Uses three GitHub secrets: `VERCEL_TOKEN`, `VERCEL_USER_ID`, and `VERCEL_PROJECT_ID`
+
+This means **deployment only happens if all tests pass**, a broken push to `main` will fail the build job and the deploy job will never run.
+
+### Red Phase Evidence
+*To be Added*
+![Failing CI run](./assets/ci-red.png)
+
+### Green Phase Evidence
+
+![Passing CI run](https://github.com/user-attachments/assets/3d037104-4555-47e4-a578-5a82983914c7)
