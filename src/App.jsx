@@ -5,12 +5,13 @@ import NoteSection from './pages/NoteSection/NoteSection';
 
 export default function App() {
     const [ section, setSection ] = useState("home"); 
+    const [selectedNote, setSelectedNote] = useState(null);
 
     const ROUTES = {
-        "home": <HomeSection section={section} setSection={setSection}/>,
-        "add" : <NoteSection section={section} setSection={setSection}/>,
-        "edit" : <NoteSection section={section} setSection={setSection}/>,
-        "delete": <HomeSection section={section} setSection={setSection}/>,
+        "home": <HomeSection section={section} setSection={setSection} setSelectedNote={setSelectedNote}/>,
+        "add" : <NoteSection section={section} setSection={setSection} selectedNote={null}/>,
+        "edit" : <NoteSection section={section} setSection={setSection} selectedNote={selectedNote}/>,
+        "delete": <HomeSection section={section} setSection={setSection} setSelectedNote={setSelectedNote}/>,
     }
 
 

@@ -6,7 +6,7 @@ import deleteIcon from './../../assets/icons/delete.png';
 import getAllNotes from './../../utils/getAllNotes';
 import { useEffect, useState } from 'react';
 
-export default function HomeSection({ section, setSection }) {
+export default function HomeSection({ section, setSection, setSelectedNote }) {
     const IMAGE_ROUTES = {
         "home": homeHerta,
         "delete": deleteHerta
@@ -49,7 +49,10 @@ export default function HomeSection({ section, setSection }) {
                         <div className='note-header'>
                             <h3>{note.title}</h3>
                             <div className='utils'>
-                                <img src={editIcon} onClick={() => setSection("edit")}/>
+                                <img src={editIcon} onClick={() => {
+                                    setSelectedNote(note);
+                                    setSection("edit");
+                                }}/>
                                 <img src={deleteIcon} onClick={() => setSection("delete")}/>
                             </div>
                         </div>

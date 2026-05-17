@@ -1,4 +1,4 @@
-export default async function editNode(id, note) {
+export default async function editNote(id, note) {
     try {
         const endpoint = `http://localhost:3000/notes/${id}`;
         const request = {
