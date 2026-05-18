@@ -1,6 +1,6 @@
 export default async function createNote(note) {
     try {
-        const endpoint = "http://localhost:3000/notes";
+        const endpoint = "http://localhost:3000/notesssssssssss";
         const request = {
             "method": "POST",
             "headers": {"content-type": "application/json"},
